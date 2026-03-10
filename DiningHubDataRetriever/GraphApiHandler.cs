@@ -79,8 +79,8 @@ public class GraphApiHandler
                     {
                         Name = item.Name ?? "Failed to get Name",
                         SkuId = item.Sku ?? "Failed to get Sku",
-                        Ingredients = ingredients ?? "Failed to get Ingredients",
-                        Allergens = allergens ?? "Failed to get Allergens"
+                        Ingredients = ingredients,
+                        Allergens = allergens
                     });
                 }
             }

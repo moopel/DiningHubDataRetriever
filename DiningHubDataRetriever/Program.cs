@@ -2,7 +2,7 @@
 using DiningHubDataRetriever;
 using DiningHubDataRetriever.Models;
 
-Console.WriteLine("Hello, World!");
+Console.WriteLine("Starting...");
 
 GraphApiHandler handler = new();
 
@@ -20,6 +20,7 @@ sb.AppendLine();
 foreach (var hubKvp in diningHubDictionary)
 {
     sb.AppendLine($"{hubKvp.Key} item count: {hubKvp.Value.Count} ");
+    /*
     if (hubKvp.Value.Count > 5)
     {
         sb.AppendLine("Top 5 Items:");
@@ -28,7 +29,18 @@ foreach (var hubKvp in diningHubDictionary)
             sb.AppendLine($"{hubKvp.Value[i]}");
         }
     }
+    */
+    foreach(DiningHubItem item in hubKvp.Value)
+    {
+        bool hasAllergenInfo = !string.IsNullOrWhiteSpace(item.Allergens);
+        bool hasIngredients = !string.IsNullOrWhiteSpace(item.Ingredients);
+
+        sb.AppendLine($"{item.Name} - HasAllergenInfo[{hasAllergenInfo}] - HasIngredients[{hasIngredients}]");
+    }
+    sb.AppendLine("");
     sb.AppendLine("");
 }
 
 Console.WriteLine(sb.ToString());
+
+Console.WriteLine("Completed.");
