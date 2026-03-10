@@ -1,16 +1,30 @@
-﻿using DiningHubDataRetriever;
+﻿using System.Text;
+using DiningHubDataRetriever;
 using DiningHubDataRetriever.Models;
 
 Console.WriteLine("Hello, World!");
 
 GraphApiHandler handler = new();
 
-List<DiningHubItem>? items = await handler.GetDiningHubItems("the-dish-at-mcalister", 10);
+Dictionary<string, List<DiningHubItem>> diningHubDictionary = [];
 
-if (items is not null)
+
+foreach (string diningHub in ConstantValues.DiningHubs)
 {
-    foreach (DiningHubItem item in items)
-    {
-        Console.WriteLine(item);
-    }
+    List<DiningHubItem>? items = await handler.GetDiningHubItems(diningHub, 10);
+    diningHubDictionary[diningHub] = items ?? [];
 }
+
+StringBuilder sb = new();
+sb.AppendLine();
+foreach (var hubKvp in diningHubDictionary)
+{
+    sb.AppendLine($"{hubKvp.Key} items :");
+    foreach (DiningHubItem item in hubKvp.Value)
+    {
+        sb.AppendLine($"{item}");
+    }
+    sb.AppendLine("");
+}
+
+Console.WriteLine(sb.ToString());
