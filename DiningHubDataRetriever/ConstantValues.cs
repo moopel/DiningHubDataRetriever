@@ -7,6 +7,14 @@ public static class ConstantValues
 
     public static readonly List<string> DiningHubs = ["community-hub", "the-dish-at-mcalister", "schilletter-dining-hall"];
 
+    public static readonly Dictionary<string, string> GraphHeaders = new()
+    { 
+        ["Magento-Website-Code"] = "ch_clemson",
+        ["Magento-Store-View-Code"] = "ch_clemson_en",
+        ["x-api-key"] = "ElevateAPIProd",
+        ["store"] = "ch_clemson_en"
+    };
+
     public const string MenuItemQuery = @"
     query getLocationRecipes(
       $campusUrlKey:String!,

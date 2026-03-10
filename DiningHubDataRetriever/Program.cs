@@ -19,10 +19,14 @@ StringBuilder sb = new();
 sb.AppendLine();
 foreach (var hubKvp in diningHubDictionary)
 {
-    sb.AppendLine($"{hubKvp.Key} items :");
-    foreach (DiningHubItem item in hubKvp.Value)
+    sb.AppendLine($"{hubKvp.Key} item count: {hubKvp.Value.Count} ");
+    if (hubKvp.Value.Count > 5)
     {
-        sb.AppendLine($"{item}");
+        sb.AppendLine("Top 5 Items:");
+        for (int i = 0; i <= 5; i++)
+        {
+            sb.AppendLine($"{hubKvp.Value[i]}");
+        }
     }
     sb.AppendLine("");
 }

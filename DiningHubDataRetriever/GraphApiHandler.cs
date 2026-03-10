@@ -16,8 +16,10 @@ public class GraphApiHandler
     {
         _client = new HttpClient();
 
-        _client.DefaultRequestHeaders.Add("x-api-key", "ElevateAPIProd");
-        _client.DefaultRequestHeaders.Add("store", "ch_clemson_en");
+        foreach (var kvp in ConstantValues.GraphHeaders)
+        {
+            _client.DefaultRequestHeaders.Add(kvp.Key, kvp.Value);
+        }
 
         _client.BaseAddress = new Uri(Endpoint);
 
