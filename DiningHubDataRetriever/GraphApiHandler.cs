@@ -52,7 +52,7 @@ public class GraphApiHandler
             {
                 ["query"] = ConstantValues.MenuItemQuery,
                 ["operationName"] = "getLocationRecipes",
-                ["variables"] = $"{{\"campusUrlKey\":\"campus\",\"locationUrlKey\":\"{location}\",\"date\":\"{date}\",\"mealPeriod\":{mealPeriod},\"viewType\":\"DAILY\"}}"
+                ["variables"] = $"{{\"campusUrlKey\":\"campus\",\"locationUrlKey\":\"{location}\",\"date\":\"{date}\",\"viewType\":\"DAILY\"}}"
             };
 
             string queryParameterString = BuildQueryParameters(queryParams);
