@@ -1,0 +1,1 @@
+Trying to grab data from https://clemson.mydininghub.com/en/locations
